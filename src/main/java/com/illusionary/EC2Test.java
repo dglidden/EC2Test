@@ -23,6 +23,9 @@ public class EC2Test implements CommandLineRunner {
         String instanceType = EC2MetadataUtils.getInstanceType();
 
         LOGGER.log(Level.INFO, "EC2: {0}, {1}, {2}", new Object[]{instanceId, privateAddress, instanceType});
+
+        EC2MetadataUtils.InstanceInfo instanceInfo = EC2MetadataUtils.getInstanceInfo();
+        LOGGER.log(Level.INFO, "Instance Info: {0}", instanceInfo);
     }
 
     public static void main(String[] args) {
