@@ -18,14 +18,23 @@ public class EC2Test implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         LOGGER.log(Level.INFO, "Getting EC2 MetaData");
-        String instanceId = EC2MetadataUtils.getInstanceId();
-        String privateAddress = EC2MetadataUtils.getPrivateIpAddress();
-        String instanceType = EC2MetadataUtils.getInstanceType();
-
-        LOGGER.log(Level.INFO, "EC2: {0}, {1}, {2}", new Object[]{instanceId, privateAddress, instanceType});
-
         EC2MetadataUtils.InstanceInfo instanceInfo = EC2MetadataUtils.getInstanceInfo();
-        LOGGER.log(Level.INFO, "Instance Info: {0}", instanceInfo);
+
+        String accountId = instanceInfo.getAccountId();
+        String architecture = instanceInfo.getArchitecture();
+        String availabilityZone = instanceInfo.getAvailabilityZone();
+        String imageId = instanceInfo.getImageId();
+        String instanceId = instanceInfo.getInstanceId();
+        String instanceType = instanceInfo.getInstanceType();
+        String kernelId = instanceInfo.getKernelId();
+        String privateAddress = instanceInfo.getPrivateIp();
+        String region = instanceInfo.getRegion();
+        String version = instanceInfo.getVersion();
+
+        LOGGER.log(Level.INFO, "EC2: {0}, {1}, {2}, {3}", new Object[]{accountId, architecture, availabilityZone, imageId});
+        LOGGER.log(Level.INFO, "EC2: {0}, {1}, {2}, {3}", new Object[]{instanceId, instanceType, kernelId, privateAddress});
+        LOGGER.log(Level.INFO, "EC2: {0}, {1}", new Object[]{region, version});
+
     }
 
     public static void main(String[] args) {
