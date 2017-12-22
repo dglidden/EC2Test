@@ -31,10 +31,16 @@ public class EC2Test implements CommandLineRunner {
         String region = instanceInfo.getRegion();
         String version = instanceInfo.getVersion();
 
-        LOGGER.log(Level.INFO, "EC2: {0}, {1}, {2}, {3}", new Object[]{accountId, architecture, availabilityZone, imageId});
-        LOGGER.log(Level.INFO, "EC2: {0}, {1}, {2}, {3}", new Object[]{instanceId, instanceType, kernelId, privateAddress});
-        LOGGER.log(Level.INFO, "EC2: {0}, {1}", new Object[]{region, version});
-
+        LOGGER.log(Level.INFO, "Account ID: {0}", accountId);
+        LOGGER.log(Level.INFO, "Architecture: {0}", architecture);
+        LOGGER.log(Level.INFO, "Availability Zone: {0}", availabilityZone);
+        LOGGER.log(Level.INFO, "Image ID: {0}", imageId);
+        LOGGER.log(Level.INFO, "Instance ID: {0}", instanceId);
+        LOGGER.log(Level.INFO, "Instance Type: {0}", instanceType);
+        LOGGER.log(Level.INFO, "Kernel ID: {0}", kernelId);
+        LOGGER.log(Level.INFO, "Private Address: {0}", privateAddress);
+        LOGGER.log(Level.INFO, "Region: {0}", region);
+        LOGGER.log(Level.INFO, "Version: {0}", version);
     }
 
     public static void main(String[] args) {
