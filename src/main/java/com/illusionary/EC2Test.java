@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,6 +32,7 @@ public class EC2Test implements CommandLineRunner {
         String region = instanceInfo.getRegion();
         String version = instanceInfo.getVersion();
 
+        LOGGER.log(Level.INFO, "Instance Info");
         LOGGER.log(Level.INFO, "Account ID: {0}", accountId);
         LOGGER.log(Level.INFO, "Architecture: {0}", architecture);
         LOGGER.log(Level.INFO, "Availability Zone: {0}", availabilityZone);
@@ -41,6 +43,18 @@ public class EC2Test implements CommandLineRunner {
         LOGGER.log(Level.INFO, "Private Address: {0}", privateAddress);
         LOGGER.log(Level.INFO, "Region: {0}", region);
         LOGGER.log(Level.INFO, "Version: {0}", version);
+
+        Map<String, EC2MetadataUtils.IAMSecurityCredential> iam = EC2MetadataUtils.getIAMSecurityCredentials();
+        EC2MetadataUtils.IAMSecurityCredential sec = iam.get("RLEADEVCE");
+        LOGGER.log(Level.INFO, "IAM Info");
+        LOGGER.log(Level.INFO, "AccessKeyId: {0}", sec.accessKeyId);
+        LOGGER.log(Level.INFO, "Code: {0}", sec.code);
+        LOGGER.log(Level.INFO, "Expiration: {0}", sec.expiration);
+        LOGGER.log(Level.INFO, "Last Updated: {0}", sec.lastUpdated);
+        LOGGER.log(Level.INFO, "Message: {0}", sec.message);
+        LOGGER.log(Level.INFO, "Secret Access Key: {0}", sec.secretAccessKey);
+        LOGGER.log(Level.INFO, "Token: {0}", sec.token);
+        LOGGER.log(Level.INFO, "Type: {0}", sec.type);
     }
 
     public static void main(String[] args) {
