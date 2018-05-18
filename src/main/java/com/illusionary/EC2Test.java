@@ -33,29 +33,29 @@ public class EC2Test implements CommandLineRunner {
         String version = instanceInfo.getVersion();
 
         LOGGER.info("Instance Info");
-        LOGGER.info("Account ID: {0}", accountId);
-        LOGGER.info("Architecture: {0}", architecture);
-        LOGGER.info("Availability Zone: {0}", availabilityZone);
-        LOGGER.info("Image ID: {0}", imageId);
-        LOGGER.info("Instance ID: {0}", instanceId);
-        LOGGER.info("Instance Type: {0}", instanceType);
-        LOGGER.info("Kernel ID: {0}", kernelId);
-        LOGGER.info("Private Address: {0}", privateAddress);
-        LOGGER.info("Region: {0}", region);
-        LOGGER.info("Version: {0}", version);
+        LOGGER.info("Account ID: {}", accountId);
+        LOGGER.info("Architecture: {}", architecture);
+        LOGGER.info("Availability Zone: {}", availabilityZone);
+        LOGGER.info("Image ID: {}", imageId);
+        LOGGER.info("Instance ID: {}", instanceId);
+        LOGGER.info("Instance Type: {}", instanceType);
+        LOGGER.info("Kernel ID: {}", kernelId);
+        LOGGER.info("Private Address: {}", privateAddress);
+        LOGGER.info("Region: {}", region);
+        LOGGER.info("Version: {}", version);
 
         Map<String, EC2MetadataUtils.IAMSecurityCredential> iam = EC2MetadataUtils.getIAMSecurityCredentials();
         EC2MetadataUtils.IAMSecurityCredential sec = iam.get("RLEADEVCE");
         if(sec != null) {
             LOGGER.info("IAM Info");
-            LOGGER.info("AccessKeyId: {0}", sec.accessKeyId);
-            LOGGER.info("Code: {0}", sec.code);
-            LOGGER.info("Expiration: {0}", sec.expiration);
-            LOGGER.info("Last Updated: {0}", sec.lastUpdated);
-            LOGGER.info("Message: {0}", sec.message);
-            LOGGER.info("Secret Access Key: {0}", sec.secretAccessKey);
-            LOGGER.info("Token: {0}", sec.token);
-            LOGGER.info("Type: {0}", sec.type);
+            LOGGER.info("AccessKeyId: {}", sec.accessKeyId);
+            LOGGER.info("Code: {}", sec.code);
+            LOGGER.info("Expiration: {}", sec.expiration);
+            LOGGER.info("Last Updated: {}", sec.lastUpdated);
+            LOGGER.info("Message: {}", sec.message);
+            LOGGER.info("Secret Access Key: {}", sec.secretAccessKey);
+            LOGGER.info("Token: {}", sec.token);
+            LOGGER.info("Type: {}", sec.type);
         } else {
             LOGGER.info("No IAM Information Available");
         }
